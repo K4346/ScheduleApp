@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".SecondFragment">
 
-    <ExpandableListView
+    <android.support.v7.widget.AppCompatSpinner
         android:id="@+id/tvDayOfWeekend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="День недели"
+   android:entries="@array/spinner_with_days"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,9 +35,12 @@
         app:layout_constraintTop_toBottomOf="@id/etAmountLessons">
 
     </android.support.v7.widget.RecyclerView>
+
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rvLessons">
 
     </Button>

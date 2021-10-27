@@ -6,10 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
     <CalendarView
-        android:id="@+id/calendarView"
+        android:id="@+id/cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         tools:layout_editor_absoluteX="177dp"
-        tools:layout_editor_absoluteY="200dp" />
+        tools:layout_editor_absoluteY="200dp"
+        android:selectedWeekBackgroundColor="#ff0000"
+        android:weekNumberColor="#0000ff"
+        android:weekSeparatorLineColor="#00ff00"/>
 </LinearLayout>

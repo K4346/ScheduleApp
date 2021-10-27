@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.scheduleapp.databinding.FragmentFirstBinding
 
@@ -31,6 +32,9 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.cv.setOnDateChangeListener { calendarView, i, i2, i3 ->
+            Toast.makeText(requireContext(), "$i , $i2 , $i3", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onDestroyView() {
