@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import com.example.scheduleapp.databinding.FragmentFirstBinding
+import java.util.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -33,7 +33,18 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.cv.setOnDateChangeListener { calendarView, i, i2, i3 ->
-            Toast.makeText(requireContext(), "$i , $i2 , $i3", Toast.LENGTH_SHORT).show()
+            val calendar: Calendar = Calendar.getInstance();
+            calendar.set(i, i2, i3);
+            val dayOfWeek: Int = calendar.get(Calendar.DAY_OF_WEEK)
+            Toast.makeText(requireContext(), "$i , $i2 , $i3, ${dayOfWeek}", Toast.LENGTH_SHORT)
+                .show()
+            val args = Bundle()
+            val day = args.putString("DAY", "Понепятница")
+            args.putStringArrayList("LESSONS", arrayListOf("qwas", "abibas"))
+            args.putStringArrayList("THINGS", arrayListOf())
+            val dayDialog = DayDialog()
+            dayDialog.arguments = args
+            dayDialog.show(fragmentManager, "")
         }
     }
 

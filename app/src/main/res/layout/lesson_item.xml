@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-<EditText
+<AutoCompleteTextView
     android:id="@+id/etLessonName"
     android:layout_width="match_parent"
+    android:completionThreshold="1"
+    android:backgroundTint="@color/teal_200"
     android:layout_height="wrap_content">
-</EditText>
+</AutoCompleteTextView>
 </LinearLayout>
