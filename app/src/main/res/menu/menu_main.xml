@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.scheduleapp.MainActivity">
+    <item
+        android:id="@+id/main_schedule"
+        android:orderInCategory="100"
+        android:title="@string/schedule"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/making_schedule"
+        android:orderInCategory="100"
+        android:title="@string/make_schedule_"
+        app:showAsAction="never" />
+    <item
+    android:id="@+id/editing_lesson"
+    android:orderInCategory="100"
+    android:title="@string/things_for_lessons"
+    app:showAsAction="never" />
+
+</menu>
