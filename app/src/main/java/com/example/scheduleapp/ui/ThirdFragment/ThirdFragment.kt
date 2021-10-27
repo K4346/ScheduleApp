@@ -1,4 +1,4 @@
-package com.example.scheduleapp
+package com.example.scheduleapp.ui.ThirdFragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
