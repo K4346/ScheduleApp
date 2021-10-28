@@ -1,4 +1,4 @@
-package com.example.scheduleapp.ui.SecondFragment.adapter
+package com.example.scheduleapp.ui.secondFragment.adapter
 
 import android.R
 import android.content.Context
@@ -22,7 +22,6 @@ class LessonAdapter(val context: Context) : RecyclerView.Adapter<LessonAdapter.L
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): LessonAdapter.LessonViewHolder {
         val binding = LessonItemBinding
             .inflate(LayoutInflater.from(p0.context), p0, false)
-
         return LessonViewHolder(binding)
     }
 

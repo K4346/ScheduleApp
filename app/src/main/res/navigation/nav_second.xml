@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/secondFragment"
-        android:name="com.example.scheduleapp.ui.SecondFragment.SecondFragment"
-        android:label="fragment_second"
+        android:name="com.example.scheduleapp.ui.secondFragment.SecondFragment"
+        android:label="Уроки"
         tools:layout="@layout/fragment_second" />
 </navigation>

@@ -2,24 +2,22 @@ package com.example.scheduleapp.repositories
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.example.scheduleapp.entities.Lesson
+import android.util.ArrayMap
 
 
- class DayModel() : Parcelable {
+class DayModel() : Parcelable {
     var dayOfWeek: String?=""
-    var lessons: ArrayList<String>?=null
-    var things: ArrayList<String>? = arrayListOf()
+    var lessons: ArrayList<String>?= arrayListOf()
+    var things: ArrayMap<String, List<String>>? = ArrayMap()
 
     constructor(parcel: Parcel) : this() {
         dayOfWeek = parcel.readString()
         lessons = parcel.createStringArrayList()
-        things = parcel.createStringArrayList()
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(dayOfWeek)
         parcel.writeStringList(lessons)
-        parcel.writeStringList(things)
     }
 
     override fun describeContents(): Int {
