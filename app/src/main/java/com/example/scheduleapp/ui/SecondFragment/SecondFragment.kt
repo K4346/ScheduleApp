@@ -1,6 +1,5 @@
 package com.example.scheduleapp.ui.SecondFragment
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -12,9 +11,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.scheduleapp.databinding.FragmentSecondBinding
 import com.example.scheduleapp.ui.SecondFragment.adapter.LessonAdapter
-import android.content.SharedPreferences
-
-
+import com.example.scheduleapp.repositories.DayModel
+import com.example.scheduleapp.repositories.weekend
 
 
 /**
@@ -58,9 +56,12 @@ class SecondFragment : Fragment() {
 
     private fun setListeners() {
         binding.button.setOnClickListener {
-            if (binding.spinnerDayOfWeekend.selectedItemId.toInt() == 0) {
+            val select=binding.spinnerDayOfWeekend.selectedItemId.toInt()
+            if ( select== 0) {
                 return@setOnClickListener
             }
+
+            weekend.week[select-1]?.lessons=adapter.list as ArrayList<String>
             Toast.makeText(
                 requireContext(),
                 "${binding.spinnerDayOfWeekend.selectedItemId}",
@@ -84,7 +85,7 @@ class SecondFragment : Fragment() {
     }
 
     fun fillRecycler(i: Int) {
-        adapter.list = k.filterIndexed { index, s -> index < i }
+        adapter.list = k.filterIndexed { index, s -> index < i } as ArrayList<String>
     }
 
     override fun onDestroyView() {

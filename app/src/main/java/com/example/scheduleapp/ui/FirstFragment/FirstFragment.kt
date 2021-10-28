@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.scheduleapp.databinding.FragmentFirstBinding
+import com.example.scheduleapp.repositories.DayModel
+import com.example.scheduleapp.repositories.weekend
 import java.util.*
 
 /**
@@ -39,8 +41,14 @@ class FirstFragment : Fragment() {
             Toast.makeText(requireContext(), "$i , $i2 , $i3, ${dayOfWeek}", Toast.LENGTH_SHORT)
                 .show()
             val args = Bundle()
-            val day = args.putString("DAY", "Понепятница")
-            args.putStringArrayList("LESSONS", arrayListOf("qwas", "abibas"))
+            args.putStringArrayList("Понедельник", weekend.week[0]?.lessons)
+            args.putStringArrayList("Вторник", weekend.week[1]?.lessons)
+            args.putStringArrayList("Среда", weekend.week[2]?.lessons)
+            args.putStringArrayList("Понедельник", weekend.week[3]?.lessons)
+            args.putStringArrayList("Понедельник", weekend.week[4]?.lessons)
+            args.putStringArrayList("Понедельник", weekend.week[5]?.lessons)
+            args.putParcelableArrayList("DAY", weekend.week)
+            val k =args.getParcelableArrayList<DayModel>("DAY")
             args.putStringArrayList("THINGS", arrayListOf())
             val dayDialog = DayDialog()
             dayDialog.arguments = args
