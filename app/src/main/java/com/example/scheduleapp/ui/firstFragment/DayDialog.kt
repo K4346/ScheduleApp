@@ -1,10 +1,17 @@
 package com.example.scheduleapp.ui.firstFragment
 
+import android.R
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import com.example.scheduleapp.repositories.weekend
+import android.view.Gravity
+
+import android.widget.TextView
+
+
+
 
 class DayDialog() : DialogFragment() {
     private val catNames = arrayOf("Добавить в избранное", "Погладить")
@@ -22,6 +29,8 @@ class DayDialog() : DialogFragment() {
                 var thingsString = ""
                 things.forEach { thing->thingsString = thingsString + thing +" "}
                 s = s + it + " : " + thingsString + "\n"
+            } else{
+                s = s + it + "\n"
             }
         }
 

@@ -20,6 +20,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.firstActivity.FirstActivity"
+            android:label="11111" />
+        <activity
+            android:name=".ui.secondActivity.SecondActivity"
+            android:label="22222" />
+        <activity
+            android:name=".ui.thirdActivity.ThirdActivity"
+            android:label="1333111333" />
     </application>
 
 </manifest>

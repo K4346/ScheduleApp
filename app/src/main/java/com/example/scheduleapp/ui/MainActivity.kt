@@ -1,11 +1,14 @@
 package com.example.scheduleapp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.scheduleapp.R
 import com.example.scheduleapp.databinding.ActivityMainBinding
+import com.example.scheduleapp.ui.firstActivity.FirstActivity
+import com.example.scheduleapp.ui.thirdActivity.ThirdActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,10 +19,8 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val intent = Intent(this, FirstActivity::class.java)
+        startActivity(intent)
 
-        val navHostFragment = supportFragmentManager.findFragmentById(
-            R.id.nav_host_fragment_content_main
-        ) as NavHostFragment
-        binding.l.bnv.setupWithNavController(navHostFragment.navController)
 }
 }

@@ -40,6 +40,8 @@ class ThingsAdapter(val context: Context) : RecyclerView.Adapter<ThingsAdapter.T
                     weekend.listWithChecked.add(holder.thing.text.toString())
                 weekend.things?.put(weekend.selectedItems,weekend.listWithChecked)
                 }
+            } else if (weekend.listWithChecked.indexOf(holder.thing.text.toString())!=-1){
+                weekend.listWithChecked.removeAt(weekend.listWithChecked.indexOf(holder.thing.text.toString()))
             }
         }
     }
