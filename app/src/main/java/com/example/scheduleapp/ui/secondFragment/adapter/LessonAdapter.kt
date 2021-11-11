@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.example.scheduleapp.databinding.LessonItemBinding
-import com.example.scheduleapp.entities.Day
+import com.example.scheduleapp.util
 
 class LessonAdapter(val context: Context) : RecyclerView.Adapter<LessonAdapter.LessonViewHolder>() {
 
@@ -67,17 +67,19 @@ class LessonAdapter(val context: Context) : RecyclerView.Adapter<LessonAdapter.L
 
     companion object {
         val lessons = arrayOf(
-            Day.theoryOfInformation_practice,
-            Day.theoryOfInformation_lecture,
-            Day.english,
-            Day.superComputers_lecture,
-            Day.theoryOfProbability_practice,
-            Day.theoryOfProbability_lecture,
-            Day.dotNet_practice,
-            Day.dotNet_lecture,
-            Day.computerGraphics_practice,
-            Day.computerGraphics_lecture,
-            Day.mobileDevelop,
+            util.day.theoryOfInformation_practice,
+            util.day.theoryOfInformation_lecture,
+            util.day.english,
+            util.day.english2,
+            util.day.superComputers_practice,
+            util.day.superComputers_lecture,
+            util.day.theoryOfProbability_practice,
+            util.day.theoryOfProbability_lecture,
+            util.day.dotNet_practice,
+            util.day.dotNet_lecture,
+            util.day.computerGraphics_practice,
+            util.day.computerGraphics_lecture,
+            util.day.mobileDevelop,
         )
     }
 }

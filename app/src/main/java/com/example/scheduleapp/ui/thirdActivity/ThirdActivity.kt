@@ -3,17 +3,14 @@ package com.example.scheduleapp.ui.thirdActivity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.AppCompatTextView
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.example.scheduleapp.databinding.FragmentThirdBinding
-import com.example.scheduleapp.repositories.weekend
 import com.example.scheduleapp.ui.firstActivity.FirstActivity
 import com.example.scheduleapp.ui.secondActivity.SecondActivity
-import com.example.scheduleapp.ui.thirdFragment.ThingsAdapter
 import com.example.scheduleapp.util
 
 class ThirdActivity : AppCompatActivity() {
@@ -22,10 +19,9 @@ class ThirdActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = FragmentThirdBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        adapter = ThingsAdapter(applicationContext)
+        adapter = ThingsAdapter(this)
         setSpinnerAdapter()
         setListeners()
         setRecyclerViewAdapter()
@@ -43,8 +39,7 @@ class ThirdActivity : AppCompatActivity() {
 
         val listener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                weekend.selectedItems = (p1 as TextView).text.toString()
-                weekend.listWithChecked = arrayListOf()
+                util.selectedLesson = (p1 as TextView).text.toString()
                 adapter.notifyDataSetChanged()
             }
 
@@ -67,10 +62,23 @@ class ThirdActivity : AppCompatActivity() {
             ArrayAdapter(
                 applicationContext,
                 android.R.layout.simple_spinner_item,
-                util.listOfLessons()
+                getLessonsList()
             )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinner.adapter = adapter
+        util.selectedLesson = if (getLessonsList().size!=0) getLessonsList()[0] else ""
     }
 
+    private fun getLessonsList(): ArrayList<String> {
+        val lessons = arrayListOf<String>()
+        util.getScheduleFromSp(this).days.forEach { schedule ->
+            schedule.lessons?.map { lesson ->
+                if (!lessons.contains(lesson)) {
+                    if (lesson.isNotEmpty()){
+                    lessons.add(lesson)
+                }}
+            }
+        }
+        return lessons
+    }
 }

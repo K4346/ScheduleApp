@@ -2,9 +2,12 @@
     <!-- Base application theme. -->
     <style name="Theme.ScheduleApp" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryDark">@color/purple_700</item>
-        <item name="colorAccent">@color/teal_200</item>
+        <item name="colorAccent">@color/purple_500</item>
+        <item name="button_color">@color/purple_500</item>
+        <item name="title_color">@color/white</item>
+        <item name="background_color">@color/black</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

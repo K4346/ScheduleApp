@@ -22,13 +22,13 @@
         </activity>
         <activity
             android:name=".ui.firstActivity.FirstActivity"
-            android:label="11111" />
+            android:label="Расписание" />
         <activity
             android:name=".ui.secondActivity.SecondActivity"
-            android:label="22222" />
+            android:label="Изменить График" />
         <activity
             android:name=".ui.thirdActivity.ThirdActivity"
-            android:label="1333111333" />
+            android:label="Предметы" />
     </application>
 
 </manifest>

@@ -1,19 +1,12 @@
 package com.example.scheduleapp.ui.firstActivity
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.Gravity
-import android.view.View
-import android.widget.TextView
-import android.widget.Toast
 import com.example.scheduleapp.databinding.FragmentFirstBinding
-import com.example.scheduleapp.entities.Week
-import com.example.scheduleapp.repositories.weekend
-import com.example.scheduleapp.ui.firstFragment.DayDialog
 import com.example.scheduleapp.ui.secondActivity.SecondActivity
 import com.example.scheduleapp.ui.thirdActivity.ThirdActivity
+import com.example.scheduleapp.util
 import java.util.*
 
 class FirstActivity : AppCompatActivity() {
@@ -22,9 +15,14 @@ class FirstActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        util.initSP(this)
         binding = FragmentFirstBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.resetButton.setOnClickListener {
+            util.removeSP(this)
+            util.initSP(this)
+        }
 
         binding.leftButton.setOnClickListener {
             val intent = Intent(this, ThirdActivity::class.java)
@@ -38,21 +36,9 @@ class FirstActivity : AppCompatActivity() {
         binding.cv.setOnDateChangeListener { calendarView, i, i2, i3 ->
             val calendar: Calendar = Calendar.getInstance();
             calendar.set(i, i2, i3);
-            val dayOfWeek: Int = calendar.get(Calendar.DAY_OF_WEEK)
-            Toast.makeText(applicationContext, "$i , $i2 , $i3, ${dayOfWeek}", Toast.LENGTH_SHORT)
-                .show()
+            val dayOfWeek: Int = calendar.get(Calendar.DAY_OF_WEEK) - 1
             val args = Bundle()
 
-            val day: String = when (dayOfWeek) {
-                1 -> Week.monday
-                2 -> Week.tuesday
-                3 -> Week.wednesday
-                4 -> Week.thursday
-                5 -> Week.friday
-                6 -> Week.saturday
-                else -> Week.sunday
-            }
-            weekend.week[dayOfWeek - 1]?.dayOfWeek = day
             args.putInt("DAY", dayOfWeek)
             val dayDialog = DayDialog()
             dayDialog.arguments = args

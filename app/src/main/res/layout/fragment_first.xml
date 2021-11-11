@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.firstFragment.FirstFragment">
+    android:layout_height="match_parent">
 
     <CalendarView
         android:id="@+id/cv"
@@ -14,20 +13,37 @@
         android:selectedWeekBackgroundColor="#ff0000"
         android:weekNumberColor="#0000ff"
         android:weekSeparatorLineColor="#00ff00"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="177dp" />
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintBottom_toTopOf="@+id/gl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сброс расписания"
+        android:textColor="@color/white"
+        android:backgroundTint="?attr/button_color"
+        app:layout_constraintBottom_toTopOf="@+id/gl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+
+    </android.support.v7.widget.AppCompatButton>
     <android.support.v7.widget.AppCompatImageButton
         android:id="@+id/rightButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:rotation="180"
         android:src="@drawable/ic_baseline_arrow_back_24"
+        android:backgroundTint="?attr/button_color"
+        android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/leftButton"
-        app:layout_constraintTop_toBottomOf="@+id/cv">
+        app:layout_constraintTop_toBottomOf="@+id/gl">
 
     </android.support.v7.widget.AppCompatImageButton>
 
@@ -36,9 +52,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_arrow_back_24"
+        android:backgroundTint="?attr/button_color"
+        android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/rightButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cv">
+        app:layout_constraintTop_toBottomOf="@+id/gl">
     </android.support.v7.widget.AppCompatImageButton>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
 </android.support.constraint.ConstraintLayout>

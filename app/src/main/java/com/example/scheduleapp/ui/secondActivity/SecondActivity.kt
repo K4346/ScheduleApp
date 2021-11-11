@@ -8,12 +8,11 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
-import android.widget.Toast
 import com.example.scheduleapp.databinding.FragmentSecondBinding
-import com.example.scheduleapp.repositories.weekend
 import com.example.scheduleapp.ui.firstActivity.FirstActivity
 import com.example.scheduleapp.ui.secondFragment.adapter.LessonAdapter
 import com.example.scheduleapp.ui.thirdActivity.ThirdActivity
+import com.example.scheduleapp.util
 
 
 class SecondActivity : AppCompatActivity() {
@@ -23,7 +22,6 @@ class SecondActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = FragmentSecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
         adapter = LessonAdapter(applicationContext)
@@ -54,20 +52,27 @@ class SecondActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            weekend.week[select - 1]?.lessons = adapter.list
+            val jsonObject = util.getScheduleFromSp(this)
+            jsonObject.days[select - 1].lessons = adapter.list
+            util.putScheduleFromSp(this, jsonObject)
         }
-        binding.spinnerDayOfWeekend.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                if (binding.etAmountLessons.text.toString()!="") {
-                    adapter.list = weekend.week[binding.spinnerDayOfWeekend.selectedItemId.toInt() - 1]?.lessons!!
-                    fillRecycler(binding.etAmountLessons.text.toString().toInt())
+        binding.spinnerDayOfWeekend.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    if (binding.etAmountLessons.text.toString() != "") {
+            var l=util.getScheduleFromSp(this@SecondActivity).days[binding.spinnerDayOfWeekend.selectedItemId.toInt() - 1].lessons
+                        if (l==null){
+                            l= arrayListOf()
+                        }
+                        adapter.list =l
+                        fillRecycler(binding.etAmountLessons.text.toString().toInt())
+                    }
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+
                 }
             }
-
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-
-            }
-        }
         binding.etAmountLessons.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
@@ -84,7 +89,11 @@ class SecondActivity : AppCompatActivity() {
         })
     }
 
-    fun fillRecycler(i: Int) {
+    fun fillRecycler(p: Int) {
+        var i=p
+        if (i>7){
+            i=7
+        }
         if (i <= adapter.list.size) {
             adapter.list = adapter.list.filterIndexed { index, s -> index < i } as ArrayList<String>
         } else {
