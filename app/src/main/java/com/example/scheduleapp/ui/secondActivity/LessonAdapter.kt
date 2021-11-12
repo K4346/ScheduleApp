@@ -1,4 +1,4 @@
-package com.example.scheduleapp.ui.secondFragment.adapter
+package com.example.scheduleapp.ui.secondActivity
 
 import android.R
 import android.content.Context
@@ -19,13 +19,13 @@ class LessonAdapter(val context: Context) : RecyclerView.Adapter<LessonAdapter.L
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): LessonAdapter.LessonViewHolder {
+    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): LessonViewHolder {
         val binding = LessonItemBinding
             .inflate(LayoutInflater.from(p0.context), p0, false)
         return LessonViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: LessonAdapter.LessonViewHolder, p1: Int) {
+    override fun onBindViewHolder(holder: LessonViewHolder, p1: Int) {
         val lessonName = list[p1]
         holder.lesson.setText(lessonName)
         holder.lesson.setAdapter(

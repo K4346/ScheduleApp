@@ -10,7 +10,6 @@ import android.view.View
 import android.widget.AdapterView
 import com.example.scheduleapp.databinding.FragmentSecondBinding
 import com.example.scheduleapp.ui.firstActivity.FirstActivity
-import com.example.scheduleapp.ui.secondFragment.adapter.LessonAdapter
 import com.example.scheduleapp.ui.thirdActivity.ThirdActivity
 import com.example.scheduleapp.util
 
@@ -60,11 +59,12 @@ class SecondActivity : AppCompatActivity() {
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     if (binding.etAmountLessons.text.toString() != "") {
-            var l=util.getScheduleFromSp(this@SecondActivity).days[binding.spinnerDayOfWeekend.selectedItemId.toInt() - 1].lessons
-                        if (l==null){
-                            l= arrayListOf()
+                        var l =
+                            util.getScheduleFromSp(this@SecondActivity).days[binding.spinnerDayOfWeekend.selectedItemId.toInt() - 1].lessons
+                        if (l == null) {
+                            l = arrayListOf()
                         }
-                        adapter.list =l
+                        adapter.list = l
                         fillRecycler(binding.etAmountLessons.text.toString().toInt())
                     }
                 }
@@ -90,14 +90,14 @@ class SecondActivity : AppCompatActivity() {
     }
 
     fun fillRecycler(p: Int) {
-        var i=p
-        if (i>7){
-            i=7
+        var i = p
+        if (i > 7) {
+            i = 7
         }
         if (i <= adapter.list.size) {
             adapter.list = adapter.list.filterIndexed { index, s -> index < i } as ArrayList<String>
         } else {
-            for (j in 0 until i-adapter.list.size) {
+            for (j in 0 until i - adapter.list.size) {
                 adapter.list.add("")
                 adapter.notifyDataSetChanged()
             }

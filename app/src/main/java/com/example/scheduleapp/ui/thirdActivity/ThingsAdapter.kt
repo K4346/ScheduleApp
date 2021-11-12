@@ -11,9 +11,6 @@ class ThingsAdapter(val activity: Activity) :
     RecyclerView.Adapter<ThingsAdapter.ThingsViewHolder>() {
 
     var list: List<String> = util.things
-    var q = arrayListOf<String>()
-    var currentThings: MutableList<String> = arrayListOf()
-
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ThingsViewHolder {
         val binding = ThingsItemBinding
             .inflate(LayoutInflater.from(p0.context), p0, false)
@@ -24,7 +21,7 @@ class ThingsAdapter(val activity: Activity) :
     override fun onBindViewHolder(holder: ThingsViewHolder, p1: Int) {
 
         holder.thing.text = list[p1]
-        if (util.getScheduleFromSp(activity).things!=null) {
+        if (util.getScheduleFromSp(activity).things != null) {
             if (util.getScheduleFromSp(activity).things.containsKey(util.selectedLesson)) {
                 if (util.getScheduleFromSp(activity).things.getValue(util.selectedLesson)
                         .contains(list[p1])

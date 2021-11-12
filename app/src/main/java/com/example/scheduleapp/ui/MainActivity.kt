@@ -3,12 +3,8 @@ package com.example.scheduleapp.ui
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
-import com.example.scheduleapp.R
 import com.example.scheduleapp.databinding.ActivityMainBinding
 import com.example.scheduleapp.ui.firstActivity.FirstActivity
-import com.example.scheduleapp.ui.thirdActivity.ThirdActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +17,5 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val intent = Intent(this, FirstActivity::class.java)
         startActivity(intent)
-
-}
+    }
 }

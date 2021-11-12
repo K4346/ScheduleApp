@@ -23,12 +23,6 @@ data class ScheduleEntity(
 
 data class DayEntity(
     val DayName: String,
-//    var lessons: ArrayList<Lesson>? = null
     var lessons: ArrayList<String>? = null
 
-)
-
-data class Lesson(
-    var lessonName: String,
-    var things: ArrayList<String>
 )

@@ -2,7 +2,6 @@ package com.example.scheduleapp
 
 import android.app.Activity
 import android.content.Context
-import android.content.SharedPreferences
 import com.example.scheduleapp.entities.ScheduleEntity
 import com.example.scheduleapp.entities.ScheduleObject
 import com.google.gson.Gson
@@ -48,6 +47,7 @@ object util {
             mPrefs.edit().putString("Schedule", json).apply()
         }
     }
+
     fun removeSP(activity: Activity) {
         val mPrefs = activity.getSharedPreferences("ScheduleApp", Context.MODE_PRIVATE)
         mPrefs.edit().clear().apply()

@@ -21,18 +21,18 @@ class DayDialog() : DialogFragment() {
         var things: MutableList<String> = arrayListOf()
         var s = ""
 
-        lessons?.forEachIndexed {i,it->
+        lessons?.forEachIndexed { i, it ->
             if (schedule.things.containsKey(it)) {
                 things = (schedule.things.getValue(it))
-                if (it.isNotEmpty()){
-                var thingsString = ""
-                things.forEach { thing -> thingsString = thingsString + thing + " " }
-                s =s + util.time[i] + it + " : " + thingsString + "\n"}
-                else s += "\n"
+                if (it.isNotEmpty()) {
+                    var thingsString = ""
+                    things.forEach { thing -> thingsString = thingsString + thing + " " }
+                    s = s + util.time[i] + it + " : " + thingsString + "\n"
+                } else s += "\n"
             } else {
-                if (it.isNotEmpty()){
-                s =  s + util.time[i] + it + "\n"
-            } else {
+                if (it.isNotEmpty()) {
+                    s = s + util.time[i] + it + "\n"
+                } else {
                     s += "\n"
                 }
             }
@@ -42,7 +42,6 @@ class DayDialog() : DialogFragment() {
             val builder = AlertDialog.Builder(it)
             builder.setTitle(
                 schedule.days[dayOfWeek - 1].DayName
-//                weekend.week[dayOfWeek - 1]?.dayOfWeek
             )
                 .setMessage(s)
             builder.create()
