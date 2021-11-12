@@ -9,5 +9,5 @@
         android:id="@+id/secondFragment"
         android:name="com.example.scheduleapp.ui.secondFragment.SecondFragment"
         android:label="Уроки"
-        tools:layout="@layout/fragment_second" />
+        tools:layout="@layout/activity_second" />
 </navigation>

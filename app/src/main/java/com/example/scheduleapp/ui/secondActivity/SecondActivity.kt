@@ -8,7 +8,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
-import com.example.scheduleapp.databinding.FragmentSecondBinding
+import com.example.scheduleapp.databinding.ActivitySecondBinding
 import com.example.scheduleapp.ui.firstActivity.FirstActivity
 import com.example.scheduleapp.ui.thirdActivity.ThirdActivity
 import com.example.scheduleapp.util
@@ -16,12 +16,12 @@ import com.example.scheduleapp.util
 
 class SecondActivity : AppCompatActivity() {
 
-    private lateinit var binding: FragmentSecondBinding
+    private lateinit var binding: ActivitySecondBinding
     private lateinit var adapter: LessonAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = FragmentSecondBinding.inflate(layoutInflater)
+        binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
         adapter = LessonAdapter(applicationContext)
         setListeners()

@@ -9,5 +9,5 @@
         android:id="@+id/firstFragment"
         android:name="com.example.scheduleapp.ui.firstFragment.FirstFragment"
         android:label="Календарь"
-        tools:layout="@layout/fragment_first" />
+        tools:layout="@layout/activity_first" />
 </navigation>

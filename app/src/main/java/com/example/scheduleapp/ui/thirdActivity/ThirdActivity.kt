@@ -8,18 +8,18 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import com.example.scheduleapp.databinding.FragmentThirdBinding
+import com.example.scheduleapp.databinding.ActivityThirdBinding
 import com.example.scheduleapp.ui.firstActivity.FirstActivity
 import com.example.scheduleapp.ui.secondActivity.SecondActivity
 import com.example.scheduleapp.util
 
 class ThirdActivity : AppCompatActivity() {
-    private lateinit var binding: FragmentThirdBinding
+    private lateinit var binding: ActivityThirdBinding
     private lateinit var adapter: ThingsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = FragmentThirdBinding.inflate(layoutInflater)
+        binding = ActivityThirdBinding.inflate(layoutInflater)
         setContentView(binding.root)
         adapter = ThingsAdapter(this)
         setSpinnerAdapter()
@@ -44,7 +44,6 @@ class ThirdActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
-
             }
         }
         binding.spinner.post { binding.spinner.setOnItemSelectedListener(listener) }
